@@ -13046,12 +13046,12 @@ a)Simplicity
 b)No training involved and can be used for regression.
 Since KNN is a lazy learner and does not assume any probability distribution, so need to load entire training set everytime testing is done, so it works well when there is less training data.
 The disadvantage is that this model takes more computation time.
-Since, we have less training data but the most important reason why KNN is a good candidate is we need to classify on the basis of just one feature i.e income.</p>
+Since, we have less training data but the most important reason why KNN is a good candidate is there is no learning as it loads the entire dataset.</p>
 <p>2)Decision Trees:
 Decision Trees are used to improve the baseline movie recommendation approach of NETFLIX by 10% in accuracy.
 Decision trees have the ability of selecting good features and can deal with noisy data. It works well when there are lot of features and need to select best features.
 The disadvantage is that this model tends to overfit.
-We can use Decision tree for this problem since we have 103 features and decision tree will help us out with norrowing down our options.</p>
+We can use Decision tree for this problem since it can implicitly do feature selection for us.</p>
 <p>3)Gaussian Naive Bayes:
 Gaussian Naive Bayes are used to check whether the email is spam or not. 
 Gaussian Naive Bayes are easy to implement and works great with big feature space. Suprisingly, it performs well because of it's simplicity though it has the disadvantage that it assumes all the features are independent.
@@ -14015,7 +14015,10 @@ DecisionTreeClassifier takes less time during the training phase whereas the KNN
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-Okay, the final model chosen is DecisionTreeClassifier. Decision Tree makes a predicition by asking questions on a feature set(in training set) and bascially finds out all the paths that leads to possible answers. But the main trick is asking the right question such that it splits the data in two equal halfs. Allow me to explain this with the help of an example. If we were to identify a person which is similar to what we were taught in the class given some relevant information about the person, we ask the number of questions to discard the other possibilities and go in the right direction. If we ask is the person male or female, chops the 50% of the data assuming we have equal number of men and women in the world. Now, if we ask if the person is wearning on a specific day won't give us any further direction, right? So, now we work on same number of guesses we had before asking the irrelevant question. So, the decision tree splits the data and which question/feature gives the best split is taken into consideration. So, the model asumes all the training data as root and splits the data based on features that cause the best split and an ideal split is splitting the data into half.</p>
+Okay, the final model chosen is DecisionTreeClassifier. A decision tree is an inverted tree with root at the top with nodes on which tree splits into branches. When the node cannot be split further, it's a leaf node. Let's take an example that takes standard titanic dataset to figure out whether a person will survive or not.
+<img src="1.png"><br>
+This tree classifies whether a person will survive or not. We try with all the features and start with one that gives the best split. A good split is generally that maximizes the difference between the classes. In the example above, survived and died are two classes, we split based on feature that best distinguishes these classes. For the sake of explanation lets take a feature that does not helps in deciding whether the person will survive or not. Let's say did the person have breakfast or not? Either answer to this question 'yes'or 'no' does not point if the person will surive or not and thus leads to a bad split. Therefore, decision tree is build based on features that best splits the data and stops building tree when some stopping criteria is achived.
+So, the decision tree splits the data and which feature gives the best split is taken into consideration.</p>
 
 </div>
 </div>
